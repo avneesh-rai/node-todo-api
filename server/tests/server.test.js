@@ -35,7 +35,7 @@ describe('Post /todos', () => {
       });
   });
 
-  it('should throw exception', (done) => {
+  it('should not create todo with invalid body data', (done) => {
     var text = "";
     request(app)
       .post('/todos')
