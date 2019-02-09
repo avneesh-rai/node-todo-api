@@ -10,7 +10,6 @@ if (env === 'test' || env === 'development') {
     });
 }
 
-
 // if (env === 'test' || env === 'development' || env === 'production') {
 //     var config = require('./config.json');
 //     var envConfig = config[env];
