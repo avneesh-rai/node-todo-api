@@ -129,7 +129,7 @@ describe('DELETE /todos/:id', () => {
           return done(err);
         }
         Todo.findById(hexId).then((todo) => {
-          expect(todo).toBe(null);
+          expect(todo).toBeFalsy();
           done();
         }).catch((e) => done(e));
       });
@@ -190,6 +190,7 @@ describe('PATCH /todos/:id', () => {
       .expect((response) => {
         expect(response.body.todo.text).toBe(text);
         expect(response.body.todo.completed).toBe(true);
+        expect(typeof response.body.todo.completedAt).toBe('number');
       })
       .end(done);
   });
@@ -223,6 +224,7 @@ describe('PATCH /todos/:id', () => {
       .expect((response) => {
         expect(response.body.todo.text).toBe(text);
         expect(response.body.todo.completed).toBe(false);
+        expect(response.body.todo.completedAt).toBeFalsy();
       })
       .end(done);
   });
